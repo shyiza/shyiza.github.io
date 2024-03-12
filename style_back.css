@@ -1,0 +1,31 @@
+#Titulo {
+    background-color: rgba(137, 43, 226, 0.292);
+}
+
+main {
+    background-color: bisque;
+}
+
+#mod-row {
+    background-color: aqua;
+}
+
+#mod-col {
+    background-color: aqua;
+}
+
+#info {
+    background-color: rgba(128, 255, 0, 0.312);
+}
+
+#conta-fil-col {
+    background-color: rgba(0, 100, 0, 0.172);
+}
+
+nav {
+    background-color: rgba(216, 112, 147, 0.501);
+}
+
+nav li {
+    background-color: bisque;
+}

@@ -1,0 +1,374 @@
+/* VATRIABLES */
+
+:root {
+    --cuadrado: 40px;
+    --cols: 5;
+    --rows: 5;
+    --espacio_cuadrados: 2px;
+}
+
+/* ESTILO BÁSICO */
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+} 
+
+/* TITULO */
+
+#Titulo {
+text-align: center;
+font-size: 75px;
+font-family: "Avenir Next Ultra Light";
+z-index: 2;
+position: relative;
+}
+
+/* FONDO MAIN */
+
+body {
+    transition: background-color 500ms;
+}
+
+.jugar {
+    background-color: rgb(190, 244, 244)
+}
+    
+.crear {
+    background-color: rgb(190, 244, 201);
+}
+    
+.solucionar {
+    background-color: rgb(241, 241, 203);
+}
+
+main {
+    padding-left: calc(50% - 200px);
+    display: flex;
+}
+
+#info {
+    width: max-content;
+    margin: 15px 0 0 5px;
+}
+
+#fondo1 {
+    background-color: rgba(94, 94, 94, 0.286);
+    width: 400px;
+    height: 400px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: fondo1-anime 2.5s ease;
+    animation-fill-mode: forwards;
+}
+
+/*@keyframes fondo1-anime {
+0% {left: 100vw;}
+50% {left: 100vw;}
+100% {left: 0; margin: auto;}
+}*/
+
+/* BOTONES AÑADIR Y QUITAR CASILLAS */
+
+#mod-row {
+    width: 30px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#mod-col {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+#mod-col > div + div {
+    margin-left: 5px;
+}
+
+.boton {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(14, 48, 83, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+.boton:hover {
+    background-color: rgba(226, 255, 176, 0.6);
+    cursor: pointer;
+}
+
+#mod-row > div + div {
+    margin-top: 5px;
+}
+
+.fila {
+    height: 20px;
+}
+
+.colu {
+    width: 20px;
+}
+
+/* GRID */
+
+#play {
+    display: grid;
+    grid-template-columns: calc(2 * var(--espacio_cuadrados) + var(--cuadrado)) calc(var(--cols) * var(--cuadrado) + (var(--cols) + 1) * var(--espacio_cuadrados));
+    grid-template-rows: calc(2 * var(--espacio_cuadrados) + var(--cuadrado)) calc(var(--rows) * var(--cuadrado) + (var(--rows) + 1) * var(--espacio_cuadrados));
+    width: max-content;
+    margin: auto;
+}
+
+#play > div {
+    background-color: black;
+}
+
+#play > div:first-child {
+    visibility: hidden;
+}
+
+#casillas_horizontal, #casillas_vertical {
+    display: grid;
+    gap: var(--espacio_cuadrados);
+    padding: var(--espacio_cuadrados);
+} 
+
+#casillas_horizontal {
+    grid-template-columns: repeat(var(--cols), var(--cuadrado));
+    transform: translateY(var(--espacio_cuadrados));
+    border-radius: 10px 10px 0 0;
+}
+
+#casillas_vertical {
+    grid-template-rows: repeat(var(--rows), var(--cuadrado));;
+    transform: translateX(var(--espacio_cuadrados));
+    border-radius: 10px 0 0 10px;
+}
+
+#casillas_horizontal > div, #casillas_vertical > div {
+    background-color: grey;
+}
+
+#casillas_horizontal > div:first-child {
+    border-top-left-radius: 7.5px;
+}
+
+#casillas_horizontal > div:last-child {
+    border-top-right-radius: 7.5px;
+}
+
+#casillas_vertical > div:first-child {
+    border-top-left-radius: 7.5px;
+}
+
+#casillas_vertical > div:last-child {
+    border-bottom-left-radius: 7.5px;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), var(--cuadrado));
+    grid-template-rows: repeat(var(--rows), var(--cuadrado));
+    gap: var(--espacio_cuadrados);
+    padding: var(--espacio_cuadrados) 0 0 var(--espacio_cuadrados);
+    background-color: rgb(48, 101, 111);
+    width: max-content;
+}
+
+/* NUMEROS HORIZONTAL VERTICAL */
+
+#casillas_horizontal > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#casillas_horizontal > div > p {
+    font-family: "Avenir Next";
+    font-size: 15px;
+    text-align: center;
+    background-color: beige;
+}
+
+
+/* CASILLAS */
+
+#grid > div {
+background-color: white;
+height: var(--cuadrado);
+transition: background-color 0.05s linear;
+cursor: pointer;
+}
+
+#grid > div:hover {
+background-color: rgb(202, 244, 244);
+}
+
+#grid > div:active {
+background-color: rgb(255, 255, 168);
+}
+
+#grid > .clicked {
+background-color: black;
+transition: background-color 0.05s linear;
+}
+
+#grid > .clicked:hover {
+background-color: rgb(44, 65, 65);
+}
+
+#grid > .clicked:active {
+background-color: rgb(255, 255, 168);
+}
+
+#grid > div > svg {
+    width: var(--cuadrado);
+    height: var(--cuadrado);
+}
+
+/* RELOJ */
+
+#reloj {
+border: 2px solid rgb(48, 101, 111);
+border-radius: 50%;
+width: 100px;
+height: 100px;
+margin: auto;
+margin-top: 10px;
+
+animation: reloj_anime 1s;
+animation-delay: 2.5s;
+animation-fill-mode: backwards;
+}
+
+@keyframes reloj_anime {
+0% {opacity: 0;}
+100% {opacity: 1;}
+}
+
+#manecilla {
+width: 2px;
+height: 40px;
+margin: 10px 0 0 0;
+background-color: rgb(48, 101, 111);
+border-radius: 2px;
+position: relative;
+left: 50%;
+top: 0%;
+transform-origin: 50% 100%;
+
+animation: manecilla_anime 60s linear infinite;
+animation-delay: 4s;
+}
+
+@keyframes manecilla_anime {
+0% {transform: rotate(0);}
+100% {transform: rotate(360deg);}
+}
+
+/* MENU */
+
+.menu {
+margin-top: 50px;
+list-style-type: none;
+display: flex;
+justify-content: center;
+}
+
+.menu > li {
+padding: 10px 0;
+}
+
+.menu > li > p{
+float: left;
+color: white;
+background-color: rgba(14, 48, 83, 0.4);
+padding: 5px;
+width: 150px;
+text-align: center;
+border-radius: 10px;
+font-family: "Avenir Light";
+transition: color 0.2s linear, background-color 0.2s linear, transform 0.2s linear;
+
+animation: list_anime 2s ease-in-out;
+animation-fill-mode: backwards;
+animation-delay: 2s;
+}
+
+@keyframes list_anime {
+0% {transform: translateY(50px); opacity: 0;}
+100% {transform: translateY(0); opacity: 1;}
+}
+
+.menu > li + li {
+margin-left: 20px;
+}
+
+.menu > li:hover {
+cursor: pointer;
+}
+
+.menu > li:hover > p{
+color: black;
+background-color: rgba(226, 255, 176, 0.6);
+transform: translate(0, -10px);
+}
+
+#Juega {
+animation-delay: 0.2s;
+}
+
+#Crea {
+animation-delay: 0.4s;
+}
+
+#Solucionador {
+animation-delay: 0.6s;
+}
+
+/* TEXTO FILAS Y COLUMNAS */
+
+#texto_numeros {
+    display: flex;
+    justify-content: center;
+}
+
+.textnum {
+font-family:  "Avenir Next Ultra Light";
+font-size: 40px;
+background-color: rgb(0,0,0,0);
+border: none;
+border-bottom: 1px solid rgb(48, 101, 111);
+width: 100px;
+appearance: none;
+}
+
+.textnum::-webkit-outer-spin-button, .textnum::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+.textnum:hover {
+background-color: rgba(137, 43, 226, 0.088);
+}
+
+input + span {
+font-family:  "Avenir Next Ultra Light";
+font-size: 40px;
+text-align: center;
+padding: 0 5px;
+}
+
+#textfilas {
+    text-align: right;
+}
