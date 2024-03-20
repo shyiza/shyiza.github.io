@@ -5,29 +5,36 @@
     <head>
         <title>Apuntes Matemáticas</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="main.css">
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+          </script>
+          <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+          </script>
     </head>
 
     <body>
         <h1> Apuntes de matemáticas </h1>
 
         <h2>Álgebra</h2>
-        <ul>
+        <ul id="algebra">
             <li>Espacios Vectoriales</li>
             <li>Espacios Euclídeos</li>
             <li>Espacios Afines</li>
-            <li><a href="grouptheory.html">Teoría de Grupos</a></li>
-            <li>Álgebra Conmutativa</li>
-            <li>Teoría de Galois</li>
+            <li><a href="grouptheory.html">$$(G,\ast)$$</a></li>
+            <li>$$(R,+,\cdot)$$</li>
+            <li>$$\operatorname{Gal}(F/K)$$</li>
         </ul>
         <h2>Geometría y Topología</h2>
-        <ul>
-            <li>Topología General</li>
+        <ul id="geometria">
+            <li>$$(X,\mathcal{T})$$</li>
             <li>Topología Algebraica</li>
             <li>Topología Diferencial</li>
             <li>Variedades Riemannianas</li>
         </ul>
         <h2>Análisis</h2>
-        <ul>
+        <ul id="analisis">
             <li>Análisis Real</li>
             <li>Análisis Complejo</li>
             <li>Análisis Funcional</li>
